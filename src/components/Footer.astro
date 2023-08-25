@@ -1,0 +1,17 @@
+---
+---
+
+<!-- Note : The front matter is where the javascript is written but still its
+implemented only in the build time yet not available to the client; Inorder to
+add client side js , just add the script tag -->
+<footer>
+  <small>
+    Copyrights &copy; <span id="copyright"></span> | All rights reserved
+  </small>
+</footer>
+
+<script>
+  document.getElementById("copyright").innerHTML = new Date()
+    .getFullYear()
+    .toString();
+</script>

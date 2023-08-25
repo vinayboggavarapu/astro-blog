@@ -1,0 +1,42 @@
+---
+// Here is the front matter where js is written
+
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+
+const { title, content = "Astro Blog" } = Astro.props;
+const light = "bg-white text-black";
+const dark = "bg-black text-white";
+const theme = "light";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={content} />
+    <title>{title}</title>
+  </head>
+  <body
+    class={`min-h-screen flex flex-col justify-between ${
+      theme === "light" ? light : dark
+    }`}
+  >
+    <Navbar />
+    <!-- <p id="toggle">Light</p> -->
+    <div class="bg-gray-300/40 flex flex-1">
+      <slot>Text Here</slot>
+    </div>
+
+    <Footer />
+  </body>
+</html>
+
+<script>
+  const toggle = document.getElementById("toggle");
+  toggle.addEventListener("click", () => {
+    theme === "light" ? (theme = "dark") : (theme = "light");
+  });
+</script>
