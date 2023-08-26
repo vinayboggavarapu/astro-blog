@@ -1,0 +1,31 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+const {
+  title,
+  content,
+  date,
+  author,
+  category,
+  image: { src },
+} = frontmatter;
+---
+
+<Layout title="About" content="About Section">
+  <div class="border max-w-4xl mx-auto flex flex-col gap-3 p-4">
+    <header>
+      <h2 class="text-xl font-semibold">{title}</h2>
+      <div class="flex justify-between">
+        <small>by {author} - {date}</small>
+      </div>
+    </header>
+    <img alt="Post image" src={src} class="object-cover" />
+    <slot />
+
+    <a
+      href={category}
+      class="cursor-pointer underline underline-offset-2 opacity-50"
+      >Reference Docs</a
+    >
+  </div>
+</Layout>
