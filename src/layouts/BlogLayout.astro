@@ -1,4 +1,5 @@
 ---
+import { formatDate } from "../utils/formatter";
 import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 const {
@@ -16,7 +17,7 @@ const {
     <header>
       <h2 class="text-xl font-semibold">{title}</h2>
       <div class="flex justify-between">
-        <small>by {author} - {date}</small>
+        <small>by {author} - {formatDate(date)}</small>
       </div>
     </header>
     <img alt="Post image" src={src} class="object-cover" />

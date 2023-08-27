@@ -1,0 +1,31 @@
+---
+const { post, url } = Astro.props;
+
+import { formatDate } from "../utils/formatter";
+
+const {
+  title,
+  author,
+  date,
+  description,
+  image: { src },
+} = post.frontmatter;
+---
+
+<div class="flex space-y-2 p-4 rounded-md flex-col bg-white max-h-lg h-fit">
+  <h2>Reference docs</h2>
+  <a href={url}>
+    <img
+      alt="Post image"
+      src={src}
+      class="object-cover w-full h-auto"
+      width="60"
+      height="60"
+    />
+  </a>
+  <h2>{title}</h2>
+  <div class="flex justify-between">
+    <small>by {author} - {formatDate(date)}</small>
+  </div>
+  <p class="h-fit overflow-hidden line-clamp-3">{description}</p>
+</div>

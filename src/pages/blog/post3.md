@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogLayout.astro"
 title: A Post about Important Items Of Life
-date: 2022-11-20
+date: 2022-10-20
 author: Darnell McClure
 image: { src: "/images/layer2.jpg", alt: "A picture of a coder" }
 description: Have you ever wondered what the most important items of life are? Well, wonder no more! This is called the thing in the js world of the new stuff of rthe thisfn afsinasf safasfn asfanfaks sdammasd

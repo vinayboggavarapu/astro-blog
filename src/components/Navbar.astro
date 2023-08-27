@@ -2,11 +2,13 @@
 import { Icon } from "astro-icon";
 ---
 
-<nav>
+<nav class="sticky top-0 bg-white">
   <div
     class="p-4 border-b border-black shadow-md flex items-center justify-between"
   >
-    <Icon name="teenyicons:bitcoin-solid" width="30" height="30" />
+    <a href="/">
+      <Icon name="teenyicons:bitcoin-solid" width="30" height="30" />
+    </a>
     <div class="flex gap-7 bg-white">
       <a href="/about">About</a>
       <a href="/blog">Blog</a>

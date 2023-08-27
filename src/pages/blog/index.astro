@@ -1,12 +1,22 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import { formatPost } from "../../utils/formatter";
+const blogPosts = await Astro.glob("./*.md");
+const filteredPosts = formatPost(blogPosts);
 ---
 
 <Layout title="Blog" content="Blog section">
-  <div class="grid grid-cols-4">
-    <!-- <a href="/blog/post1/">Post 1</a>
+  <div class="flex flex-col p-5 gap-5">
+    <h2 class="text-center font-semibold text-xl">New Blogs</h2>
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center gap-5"
+    >
+      <!-- <a href="/blog/post1/">Post 1</a>
     <a href="/blog/post1/">Post 1</a>
     <a href="/blog/post1/">Post 1</a>
     <a href="/blog/post1/">Post 1</a> -->
+      {filteredPosts.map((post) => <Card post={post} url={post.url} />)}
+    </div>
   </div>
 </Layout>
