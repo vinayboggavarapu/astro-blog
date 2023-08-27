@@ -5,9 +5,6 @@ import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 
 const { title, content = "Astro Blog" } = Astro.props;
-const light = "bg-white text-black";
-const dark = "bg-black text-white";
-const theme = "light";
 ---
 
 <html lang="en">
@@ -20,12 +17,11 @@ const theme = "light";
     <title>{title}</title>
   </head>
   <body
-    class={` relative min-h-screen w-full flex flex-col justify-between ${
-      theme === "light" ? light : dark
-    }`}
+    id="body"
+    class={`relative min-h-screen w-full flex flex-col transition-all bg-white text-black justify-between`}
   >
     <Navbar />
-    <!-- <p id="toggle">Light</p> -->
+    <!-- <p class="cursor-pointer" id="toggle">Light</p> -->
     <div class="bg-gray-300/40 flex flex-1">
       <slot>Text Here</slot>
     </div>
@@ -35,8 +31,20 @@ const theme = "light";
 </html>
 
 <script>
+  let light = "bg-white text-black";
+  let dark = "bg-black text-white";
+  let theme = "light";
+  const body = document.getElementById("body");
   const toggle = document.getElementById("toggle");
   toggle.addEventListener("click", () => {
-    theme === "light" ? (theme = "dark") : (theme = "light");
+    if (body.classList.contains("bg-white")) {
+      theme === "light";
+      body.classList.remove("bg-white", "text-white");
+      body.classList.add("bg-black", "text-white");
+    } else {
+      theme === "dark";
+      body.classList.remove("bg-black", "text-white");
+      body.classList.add("bg-white", "text-black");
+    }
   });
 </script>

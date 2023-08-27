@@ -1,8 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 ---
 
 <Layout title="About" content="About Section">
-    <h1>About</h1>
+  <div
+    class="flex max-w-4xl space-y-2 mx-auto my-auto space-x-8 h-fit items-center w-full p-4"
+  >
+    <img src="/images/layer2.jpg" class="rounded-full w-64 h-80" />
+    <div class="flex flex-col space-y-6">
+      <h1 class="text-5xl">About</h1>
+      <p class="text-2xl">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus eius
+        odit sit asperiores qui et sapiente provident aspernatur? Repellendus
+        cumque praesentium veritatis voluptate earum error modi laboriosam
+        itaque nemo magnam.
+      </p>
+      <a
+        ><button class="w-fit bg-black text-white p-2 rounded-md"
+          >About me</button
+        >
+      </a>
+    </div>
+  </div>
 </Layout>

@@ -1,19 +1,20 @@
 ---
 const { post, url } = Astro.props;
 
-import { formatDate } from "../utils/formatter";
+import { formatDate, slugify } from "../utils/formatter";
 
 const {
   title,
   author,
   date,
   description,
+  category,
   image: { src },
 } = post.frontmatter;
 ---
 
 <div class="flex space-y-2 p-4 rounded-md flex-col bg-white max-h-lg h-fit">
-  <h2>Reference docs</h2>
+  <a href=`/category/${slugify(category)}`><h2>Reference docs</h2></a>
   <a href={url}>
     <img
       alt="Post image"

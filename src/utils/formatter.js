@@ -3,6 +3,21 @@ export const formatDate = (date) => {
   return new Date(date).toLocaleDateString("en-US", options);
 };
 
+export function slugify(text) {
+  return text
+    .toString() // Convert to a string
+    .toLowerCase() // Convert the string to lowercase letters
+    .normalize("NFD") // The normalize('NFD') will also cover accented characters
+    .replace(/[\u0300-\u036f]/g, "") // Remove accented characters for max portability
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+}
+
+console.log(slugify("Hello World!")); // Outputs: hello-world
+
 export const formatPost = (
   posts,
   {

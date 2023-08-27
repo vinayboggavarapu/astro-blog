@@ -12,10 +12,6 @@ const filteredPosts = formatPost(blogPosts);
     <div
       class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center gap-5"
     >
-      <!-- <a href="/blog/post1/">Post 1</a>
-    <a href="/blog/post1/">Post 1</a>
-    <a href="/blog/post1/">Post 1</a>
-    <a href="/blog/post1/">Post 1</a> -->
       {filteredPosts.map((post) => <Card post={post} url={post.url} />)}
     </div>
   </div>

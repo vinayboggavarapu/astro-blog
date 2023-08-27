@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import { formatPost } from "../../utils/formatter";
+const blogPosts = await Astro.glob("../blog/*.md");
+const filteredPosts = formatPost(blogPosts);
+
+import { slugify } from "../../utils/formatter";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { category: slugify("Reference Docs") },
+      props: { name: "Reference Docs" },
+    },
+    {
+      params: { category: slugify("General") },
+      props: { name: "General" },
+    },
+    {
+      params: { category: slugify("CSS") },
+      props: { name: "CSS" },
+    },
+    {
+      params: { category: slugify("Astro") },
+      props: { name: "Astro" },
+    },
+  ];
+}
+const { name } = Astro.props;
+
+const { category } = Astro.params;
+
+const categoryFilter = filteredPosts.filter(
+  (post) => slugify(post.frontmatter.category) === category
+);
+---
+
+<Layout title={name} content="Blog section">
+  <div class="flex flex-col p-5 gap-5">
+    <h2 class="text-center font-semibold text-xl">New Blogs</h2>
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center gap-5"
+    >
+      {categoryFilter.map((post) => <Card post={post} url={post.url} />)}
+    </div>
+  </div>
+</Layout>
