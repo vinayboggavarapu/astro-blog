@@ -1,6 +1,7 @@
 ---
 // Here is the front matter where js is written
 
+import ViewTransitions from "astro/components/ViewTransitions.astro";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 
@@ -28,6 +29,7 @@ const { title, content = "Astro Blog" } = Astro.props;
 
     <Footer />
   </body>
+  <ViewTransitions />
 </html>
 
 <script>

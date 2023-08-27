@@ -20,7 +20,12 @@ const {
         <small>by {author} - {formatDate(date)}</small>
       </div>
     </header>
-    <img alt="Post image" src={src} class="object-cover" />
+    <img
+      alt="Post image"
+      src={src}
+      class="object-cover"
+      transition:name=`img-${src}`
+    />
     <slot />
 
     <a

@@ -29,13 +29,13 @@ const { posts, authorName } = Astro.params;
 // const categoryFilter =
 ---
 
-<Layout title={name} content="Blog section">
+<Layout title={author} content="Blog section">
   <div class="flex flex-col p-5 gap-5">
     <h2 class="text-center font-semibold text-xl">New Blogs</h2>
     <div
       class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center gap-5"
     >
-      {categoryFilter.map((post) => <Card post={post} url={post.url} />)}
+      {posts.map((post) => <Card post={post} url={post.url} />)}
     </div>
   </div>
 </Layout>

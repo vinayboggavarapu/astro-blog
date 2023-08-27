@@ -1,9 +1,19 @@
 ---
+import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 import { formatPost } from "../../utils/formatter";
-const blogPosts = await Astro.glob("./*.md");
-const filteredPosts = formatPost(blogPosts);
+
+export async function getStaticPaths({ paginate }) {
+  const blogPosts = await Astro.glob("./*.md");
+  const filteredPosts = formatPost(blogPosts);
+
+  return paginate(filteredPosts, {
+    pageSize: 2,
+  });
+}
+
+const { page } = Astro.props;
 ---
 
 <Layout title="Blog" content="Blog section">
@@ -12,7 +22,7 @@ const filteredPosts = formatPost(blogPosts);
     <div
       class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center gap-5"
     >
-      {filteredPosts.map((post) => <Card post={post} url={post.url} />)}
+      {page.data.map((post) => <Card post={post} url={post.url} />)}
     </div>
   </div>
 </Layout>
